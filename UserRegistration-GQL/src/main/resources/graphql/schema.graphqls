@@ -1,0 +1,25 @@
+type Query{
+     allUsers:[Users]
+     getUserById(id:String):Users
+}
+
+type Mutation {
+     createUser(user:UsersReq):UsersReq
+}
+
+type Users {
+     user_id:ID!
+     name:String
+     mobNo:Long
+     email:String
+     password:String
+     address:String
+}
+
+type UsersReq {
+     name:String
+     mobNo:Long
+     email:String
+     password:String
+     address:String
+}
