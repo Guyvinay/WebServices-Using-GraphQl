@@ -60,10 +60,7 @@ public class UsersController {
 		return new ResponseEntity<List<Users>>(usersService.getAllUsers(),HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping(value = "/getByEmail/{email}")
-	public ResponseEntity<Users> getUserByEmai(@PathVariable("email")String email){
-		return new ResponseEntity<Users>(usersService.getUserDetails(email),HttpStatus.ACCEPTED);
-	}
+
 
 
 }
