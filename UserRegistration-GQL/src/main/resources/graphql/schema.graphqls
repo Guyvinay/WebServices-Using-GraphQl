@@ -10,7 +10,8 @@ type Mutation {
 type Users {
      user_id:ID!
      name:String
-     mobNo:Long
+     mobile:Long
+     role:String
      email:String
      password:String
      address:String
@@ -18,7 +19,7 @@ type Users {
 
 type UsersReq {
      name:String
-     mobNo:Long
+     mobile:Long
      email:String
      password:String
      address:String
