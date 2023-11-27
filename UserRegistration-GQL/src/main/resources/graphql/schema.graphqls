@@ -4,23 +4,22 @@ type Query{
 }
 
 type Mutation {
-     createUser(user:UsersReq):UsersReq
+     register(user:UsersReq):UsersReq
 }
 
 type Users {
      user_id:ID!
      name:String
-     mobile:Long
+     mobile:String
      role:String
      email:String
      password:String
-     address:String
 }
 
 type UsersReq {
      name:String
-     mobile:Long
+     mobile:String
      email:String
+     role:String
      password:String
-     address:String
 }

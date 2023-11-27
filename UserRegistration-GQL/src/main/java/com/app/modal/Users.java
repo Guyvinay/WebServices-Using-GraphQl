@@ -11,11 +11,16 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Users {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -41,5 +46,11 @@ public class Users {
 	@NotBlank(message = "Role cannot be blank")
 	private String role;
 
-	
+	public Users(String name, String email, String mobile, String password, String role) {
+		this.name = name;
+		this.email = email;
+		this.mobile = mobile;
+		this.password = password;
+		this.role = role;
+	}
 }
