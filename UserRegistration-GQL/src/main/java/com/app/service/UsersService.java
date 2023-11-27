@@ -7,7 +7,7 @@ import com.app.modal.Users;
 
 public interface UsersService {
 
-	public Map<String, Object> registerUser(Users user);
+	public Users registerUser(Users user);
 	public List<Users> getAllUsers();
 	public Users getUserDetails(String email);
 }

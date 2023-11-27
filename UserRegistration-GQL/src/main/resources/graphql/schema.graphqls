@@ -1,10 +1,10 @@
 type Query{
      allUsers:[Users]
-     getUserById(id:String):Users
+     getUserByEmail(email:String):Users
 }
 
 type Mutation {
-     register(user:UsersReq):UsersReq
+     register(user:UsersReq):Users
 }
 
 type Users {
@@ -16,7 +16,7 @@ type Users {
      password:String
 }
 
-type UsersReq {
+input UsersReq {
      name:String
      mobile:String
      email:String
