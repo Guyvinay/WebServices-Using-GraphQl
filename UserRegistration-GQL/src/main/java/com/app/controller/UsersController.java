@@ -48,7 +48,7 @@ public class UsersController {
 		);
 		return usersService.registerUser(userN);
 	}
-	@QueryMapping("getUser")
+	@QueryMapping("getUserByEmail")
 	public Users getUserByEmail(@Argument String email){
 		return usersService.getUserDetails(email);
 	}
