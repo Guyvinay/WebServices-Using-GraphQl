@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -29,6 +30,37 @@ import com.app.service.UsersService;
     "last_name":" One ",
     "first_name":"User"
 }
+
+http://localhost:9009/graphql
+query AllUsers {
+    allUsers {
+        name
+        mobile
+        email
+    }
+}
+
+mutation Register {
+    register(
+        user: {
+            name: "Vinay KS"
+            mobile: "7479856872"
+            email: "vin@gmail.com"
+            role: "ADMIn"
+            password: "password"
+        }
+    ) {
+        mobile
+        role
+        email
+        password
+    }
+}
+
+
+
+
+
 */
 
 @Controller
@@ -37,8 +69,8 @@ public class UsersController {
 	@Autowired
 	private UsersService usersService;
 	
-	@MutationMapping("register")
-	public Users saveUser(@Argument  UsersReq user){
+	@MutationMapping("registerNewUser")
+	public Map<String, Object> saveUser(@Argument  UsersReq user){
 		Users userN = new Users(
 				user.getName(),
 				user.getEmail(),
