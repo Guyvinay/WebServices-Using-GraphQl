@@ -1,0 +1,33 @@
+type StudentDTO {
+    id: ID!
+    name: String!
+    age: Int!
+    email: String!
+}
+
+extend type Query {
+    getStudentById(id: ID!): StudentDTO
+    getAllStudents: [StudentDTO]
+}
+
+extend type Mutation {
+    createStudent(name: String!, student: StudentReq): StudentDTO
+    updateStudent(id: ID!, student: StudentReq): StudentDTO
+    deleteStudent(id: ID!): Boolean
+}
+
+# Define the Student type
+type Student {
+    id: ID!
+    name: String!
+    age: Int!
+    email: String!
+}
+
+# Define the input type for registering or updating a student
+input StudentReq {
+    name: String!
+    age: Int!
+    email: String!
+}
+

@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.exceptions.UserNotFound;
 import com.app.modal.Users;
 import com.app.repository.UsersRepository;
 
@@ -18,7 +17,7 @@ public class UserServiceImpl implements UsersService {
 	private UsersRepository usersRepository;
 	
 	@Override
-	public Map<String, Object>  registerUser(Users user) {
+	public Users registerUser(Users user) {
 		user.setRole("ROLE_"+user.getRole().toUpperCase());
 		 Users save = usersRepository.save(user);
 		 
@@ -27,7 +26,7 @@ public class UserServiceImpl implements UsersService {
 			responseBody.put("message", "Logged in Successfully");
 			responseBody.put("userData", save);
 			
-			return responseBody;
+			return save;
 	}
 
 	@Override
@@ -36,10 +35,8 @@ public class UserServiceImpl implements UsersService {
 	}
 
 	@Override
-	public Users getUserDetails(String email) {
-		return usersRepository.findByEmail(email)
-				.orElseThrow( ()->
-				new UserNotFound("User Not Found"));
+	public List<Users> getUserDetails(String email) {
+		return usersRepository.findByEmail(email);
 		
 	}
 

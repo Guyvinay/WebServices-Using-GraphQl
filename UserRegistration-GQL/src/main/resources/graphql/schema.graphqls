@@ -1,25 +1,26 @@
-type Query{
+type Query {
      allUsers:[Users]
-     getUserByEmail(email:String):Users
+     getUserByEmail(email:String):[Users]
 }
 
 type Mutation {
      register(user:UsersReq):Users
 }
 
+
 type Users {
-     user_id:ID!
-     name:String
-     mobile:String
-     role:String
-     email:String
-     password:String
+     user_id: ID!
+     name: String
+     mobile: String
+     role: String
+     email: String
+     password: String
 }
 
 input UsersReq {
-     name:String
-     mobile:String
-     email:String
-     role:String
-     password:String
+     name: String
+     mobile: String
+     email: String
+     role: String
+     password: String
 }

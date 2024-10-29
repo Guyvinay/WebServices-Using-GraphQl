@@ -56,11 +56,24 @@ mutation Register {
         password
     }
 }
-
-
-
-
-
+mutation Register {
+    register(
+        user: {
+            name: "vinay"
+            password: "pass"
+            role: "ADMIN"
+            email: "vinay@gmail.com"
+            mobile: "7479856872"
+        }
+    ) {
+        name
+        user_id
+        role
+        mobile
+        email
+        password
+    }
+}
 */
 
 @Controller
@@ -69,8 +82,8 @@ public class UsersController {
 	@Autowired
 	private UsersService usersService;
 	
-	@MutationMapping("registerNewUser")
-	public Map<String, Object> saveUser(@Argument  UsersReq user){
+	@MutationMapping("register")
+	public Users saveUser(@Argument  UsersReq user){
 		Users userN = new Users(
 				user.getName(),
 				user.getEmail(),
@@ -81,7 +94,7 @@ public class UsersController {
 		return usersService.registerUser(userN);
 	}
 	@QueryMapping("getUserByEmail")
-	public Users getUserByEmail(@Argument String email){
+	public List<Users> getUserByEmail(@Argument String email){
 		return usersService.getUserDetails(email);
 	}
 	@QueryMapping("allUsers")
